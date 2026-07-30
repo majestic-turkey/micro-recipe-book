@@ -24,7 +24,7 @@ const { title, contributor, ingredients, steps, story, photo } = recipe.data;
 
 <h2>Instructions</h2>
 <ul>
-  {steps.map(step => (<li>{step}</li>))}
+  {instructions.map(step => (<li>{step}</li>))}
 </ul>
 
 {story && (
