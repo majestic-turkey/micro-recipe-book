@@ -12,3 +12,8 @@ export async function getStaticPaths() {
 const { recipe } = Astro.props;
 const { title, contributor, ingredients, steps, story, photo } = recipe.data;
 ---
+
+<h1>{title}</h1>
+<p>Shared by {contributor}</p>
+{photo && <img src={photo} alt={title} />)
+(story && <p class="story">{story}</p>)
