@@ -1,12 +1,51 @@
 ---
 import BookLayout from '../layouts/BookLayout.astro'
+import { getCollection } from 'astro:content'
+
+const recipes = await getCollection('recipes')
+recipes.sort((a,b) => a.data.title.localeCompare(b.data.title))
 ---
 
-<h1>Live from Columbus, Ohio, it's <span class="strike">Saturday Night</span> sugar!</h1>
-<a class="button primary" href="/recipes">Open Book</a>
+<BookLayout title="Micro Recipes">
+	<h1>Recipes With Stories</h1>
 
-<style>
-	.strike {
-		text-decoration: line-through;
-	}
-</style>
+	<div class="recipe-grid">
+		{recipes.map((recipe) => )
+			<a href={`/recipes/${recipe.id}`} class="recipe-card">
+				{recipe.data.photo && (
+					<img src={recipe.data.photo} alt={recipe.data.title} />
+				)}
+				<h2>{recipe.data.title}</h2>
+				<p class="contributor">by {recipe.data.contributor}</p>
+			</a>
+		))}
+	</div>
+
+	<style>
+		.recipe-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+			gap: 1.5rem;
+		}
+		.recipe-card {
+			text-decoration: none;
+			color: inherit;
+			border: 1px solid #ddd;
+			border-radius: 8px;
+			padding: 1rem;
+			transition: box-shadow 0.2s;
+		}
+		.recipe-card:hover {
+			box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+		}
+		.recipe-card img {
+			width: 100%;
+			aspect-ratio: 4/3;
+			object-fit: cover;
+			border-radius: 4px;
+		}
+		.contributor {
+			color: #666;
+			font-size: 0.9rem;
+		}
+	</style>
