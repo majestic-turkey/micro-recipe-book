@@ -15,12 +15,11 @@ const { title, contributor, ingredients, steps, story, photo } = recipe.data;
 
 <h1>{title}</h1>
 <p>Shared by {contributor}</p>
-{photo && <img src={photo} alt={title} />)
-(story && <p class="story">{story}</p>)
+{photo && <img src={photo} alt={title} />}
 
 <h2>Ingredients</h2>
 <ol>
-  {ingredients.map(ingredient => (<li>{ingerdient}</li>))}
+  {ingredients.map(ingredient => (<li>{ingredient}</li>))}
 </ol>
 
 <h2>Instructions</h2>
@@ -28,5 +27,9 @@ const { title, contributor, ingredients, steps, story, photo } = recipe.data;
   {steps.map(step => (<li>{step}</li>))}
 </ul>
 
-<h3>About This</h3>
-<p class="story">{story}</p>
+{story && (
+  <>
+    <h3>About This</h3>
+    <p class="story">{story}</p>
+  </>
+)}
