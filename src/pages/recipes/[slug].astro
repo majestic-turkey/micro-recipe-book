@@ -17,3 +17,16 @@ const { title, contributor, ingredients, steps, story, photo } = recipe.data;
 <p>Shared by {contributor}</p>
 {photo && <img src={photo} alt={title} />)
 (story && <p class="story">{story}</p>)
+
+<h2>Ingredients</h2>
+<ol>
+  {ingredients.map(ingredient => (<li>{ingerdient}</li>))}
+</ol>
+
+<h2>Instructions</h2>
+<ul>
+  {steps.map(step => (<li>{step}</li>))}
+</ul>
+
+<h3>About This</h3>
+<p class="story">{story}</p>
