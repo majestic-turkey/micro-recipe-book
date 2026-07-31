@@ -14,9 +14,9 @@ const { recipe } = Astro.props;
 const { title, contributor, ingredients, instructions, story, photo } = recipe.data;
 ---
 
-<BookLayout title={title}>
-  <div class="recipe-page">
-    <a href="/" class="back-link">← Back to all recipes</a>
+<h1>{title}</h1>
+<p>Shared by {contributor.split(' ')[0]}</p>
+{photo && <img src={photo} alt={title} />}
 
     <header class="recipe-header">
       {photo && (

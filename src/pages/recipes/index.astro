@@ -17,24 +17,17 @@ recipes.sort((a: { data: { title: string } }, b: { data: { title: string } }) =>
     </p>
   </section>
 
-  <div class="recipe-grid">
-    {recipes.map((recipe: { data: { title: string; contributor: string; photo?: string }, id: string }) => (
-      <a href={`/recipes/${recipe.id}`} class="recipe-card">
-        {recipe.data.photo ? (
-          <div class="card-img-wrap">
-            <img src={recipe.data.photo} alt={recipe.data.title} />
-          </div>
-        ) : (
-          <div class="card-img-placeholder">🍰</div>
-        )}
-        <div class="card-body">
-          <h2>{recipe.data.title}</h2>
-          <p class="contributor">by {recipe.data.contributor}</p>
-        </div>
-      </a>
-    ))}
-  </div>
-</BookLayout>
+	<div class="recipe-grid">
+		{recipes.map((recipe: { data: { title: string; contributor: string; photo?: string } , id: string }) => (
+			<a href={`/recipes/${recipe.id}`} class="recipe-card">
+				{recipe.data.photo && (
+					<img src={recipe.data.photo} alt={recipe.data.title} />
+				)}
+				<h2>{recipe.data.title}</h2>
+				<p class="contributor">by {recipe.data.contributor.split(' ')[0]}</p>
+			</a>
+		))}
+	</div>
 
 <style>
   /* Hero */
