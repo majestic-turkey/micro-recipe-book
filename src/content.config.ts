@@ -8,7 +8,7 @@ const recipes = defineCollection({
     title: z.string(),
     contributor: z.string(),
     ingredients: z.array(z.string()),
-    steps: z.array(z.string()),
+    instructions: z.array(z.string()),
     story: z.string().optional(),
     photo: z.string().optional(),
   }),
