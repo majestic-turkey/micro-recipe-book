@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 }
 
 const { recipe } = Astro.props;
-const { title, contributor, ingredients, steps, story, photo } = recipe.data;
+const { title, contributor, ingredients, instructions, story, photo } = recipe.data;
 ---
 
 <h1>{title}</h1>
