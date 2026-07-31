@@ -1,1 +1,55 @@
 @import "tailwindcss";
+
+@theme {
+  --color-cream: #fef6ec;
+  --color-card: #fffdf8;
+  --color-rose: #f0a0b5;
+  --color-rose-light: #fde8f0;
+  --color-mint: #7ec8a0;
+  --color-mint-light: #dff2ea;
+  --color-lavender: #b8a0d0;
+  --color-lavender-light: #ede8f8;
+  --color-peach: #f4b87c;
+  --color-peach-light: #fdecd8;
+  --color-espresso: #3d2b1f;
+  --color-muted: #7a5f52;
+  --color-border: #edd8c8;
+
+  --font-display: "Pacifico", cursive;
+  --font-sans: "Nunito", "Helvetica Neue", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-cream);
+  /* subtle polka-dot pattern — a playful nod to petri-dish colonies */
+  background-image: radial-gradient(
+    circle,
+    rgba(240, 160, 181, 0.25) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 28px 28px;
+  font-family: var(--font-sans);
+  color: var(--color-espresso);
+  min-height: 100vh;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+}
