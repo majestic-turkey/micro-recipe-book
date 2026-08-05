@@ -1,6 +1,6 @@
 ---
 import BookLayout from '../../layouts/BookLayout.astro'
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const recipes = await getCollection('recipes');
@@ -14,9 +14,9 @@ const { recipe } = Astro.props;
 const { title, contributor, ingredients, instructions, story, photo } = recipe.data;
 ---
 
-<h1>{title}</h1>
-<p>Shared by {contributor.split(' ')[0]}</p>
-{photo && <img src={photo} alt={title} />}
+<BookLayout title={title}>
+  <div class="recipe-page">
+    <a href="/recipes" class="back-link">← All Recipes</a>
 
     <header class="recipe-header">
       {photo && (
