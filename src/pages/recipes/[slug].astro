@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 const { recipe } = Astro.props;
 const { title, contributor, ingredients, instructions, story, photo } = recipe.data;
 ---
-
+<BookLayout title="{title}">
 <h1>{title}</h1>
 <p>Shared by {contributor.split(' ')[0]}</p>
 {photo && <img src={photo} alt={title} />}
@@ -328,3 +328,4 @@ const { title, contributor, ingredients, instructions, story, photo } = recipe.d
     padding-left: 1.25rem;
   }
 </style>
+</BookLayout>
