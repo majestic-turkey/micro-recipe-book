@@ -42,6 +42,8 @@ const { title, contributor, ingredients, instructions, story, photo } = recipe.d
           </h2>
           <ol class="ingredients-list">
             {ingredients.map(ingredient => (
+              ingredient.endsWith(':') ?
+              <p>{ingredient}</p> :
               <li>{ingredient}</li>
             ))}
           </ol>
