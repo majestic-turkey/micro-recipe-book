@@ -1,6 +1,6 @@
 ---
 import BookLayout from '../../layouts/BookLayout.astro'
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const recipes = await getCollection('recipes');
