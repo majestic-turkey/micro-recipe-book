@@ -24,7 +24,7 @@ recipes.sort((a: { data: { title: string } }, b: { data: { title: string } }) =>
 					<img src={recipe.data.photo} alt={recipe.data.title} />
 				)}
 				<h2>{recipe.data.title}</h2>
-				<p class="contributor">by {recipe.data.contributor.split(' ')[0]}</p>
+				<p class="contributor">by {recipe.data.contributor.startsWith("Dr") ? recipe.data.contributor : recipe.data.contributor.split(' ')[0]}</p>
 			</a>
 		))}
 	</div>
