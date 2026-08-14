@@ -29,7 +29,7 @@ recipes.sort((a,b) => a.data.title.localeCompare(b.data.title))
         )}
         <div class="card-body">
           <h2>{recipe.data.title}</h2>
-          <p class="contributor">by {recipe.data.contributor.split(' ')[0]}</p>
+          <p class="contributor">by {recipe.data.contributor.startsWith("Dr") ? recipe.data.contributor : recipe.data.contributor.split(' ')[0]}</p>
         </div>
       </a>
     ))}
