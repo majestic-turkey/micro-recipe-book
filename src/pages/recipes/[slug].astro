@@ -15,7 +15,7 @@ const { title, contributor, ingredients, instructions, story, photo } = recipe.d
 ---
 <BookLayout title={title}>
 <h1>{title}</h1>
-<p>Shared by {contributor.split(' ')[0]}</p>
+<p>Shared by {recipe.data.contributor.startsWith("Dr") ? recipe.data.contributor : recipe.data.contributor.split(' ')[0]}</p>
 
     <header class="recipe-header">
       {photo && (
@@ -27,7 +27,7 @@ const { title, contributor, ingredients, instructions, story, photo } = recipe.d
         <h1>{title}</h1>
         <p class="contributed-by">
           <span class="badge">🧁 Shared by</span>
-          <span class="contributor-name">{contributor.split(' ')[0]}</span>
+          <span class="contributor-name">{recipe.data.contributor.startsWith("Dr") ? recipe.data.contributor : recipe.data.contributor.split(' ')[0]}</span>
         </p>
       </div>
     </header>
