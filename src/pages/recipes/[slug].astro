@@ -55,9 +55,9 @@ const { title, contributor, ingredients, instructions, story, photo } = recipe.d
           </h2>
           <ol class="instructions-list">
             {instructions.map(step => (
-              <li>
-                <span class="step-text">{step}</span>
-              </li>
+              step.endsWith(':') ?
+              <p>{step}</p> :
+              <li>{step}</li>
             ))}
           </ol>
         </section>
