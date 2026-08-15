@@ -14,9 +14,7 @@ const { recipe } = Astro.props;
 const { title, contributor, ingredients, instructions, story, photo } = recipe.data;
 ---
 <BookLayout title={title}>
-<h1>{title}</h1>
-<p>Shared by {recipe.data.contributor.startsWith("Dr") ? recipe.data.contributor : recipe.data.contributor.split(' ')[0]}</p>
-
+    <a href="/recipes" class="back-link">← Back to Recipes</a>
     <header class="recipe-header">
       {photo && (
         <div class="recipe-hero-img">
@@ -79,6 +77,13 @@ const { title, contributor, ingredients, instructions, story, photo } = recipe.d
   .recipe-page {
     max-width: 800px;
     margin: 0 auto;
+  }
+
+  .recipe-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
   }
 
   .back-link {
