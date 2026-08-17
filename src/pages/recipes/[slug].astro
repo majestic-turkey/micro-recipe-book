@@ -1,67 +1,48 @@
 ---
-import BookLayout from '../../layouts/BookLayout.astro'
-import { getCollection } from 'astro:content';
+import BookLayout from "../../layouts/BookLayout.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const recipes = await getCollection('recipes');
-  return recipes.map(recipe => ({
+  const recipes = await getCollection("recipes");
+  return recipes.map((recipe) => ({
     params: { slug: recipe.id },
     props: { recipe },
   }));
 }
 
 const { recipe } = Astro.props;
-const { title, contributor, ingredients, instructions, story, photo } = recipe.data;
+const { title, contributor, ingredients, instructions, story, photo } =
+  recipe.data;
 ---
+
 <BookLayout title={title}>
-    <a href="/" class="back-link">← Back to Recipes</a>
-    <header class="recipe-header">
-      {photo && (
+  <a href="/" class="back-link">← Back to Recipes</a>
+  <header class="recipe-header">
+    {
+      photo && (
         <div class="recipe-hero-img">
           <img src={photo} alt={title} />
         </div>
-      )}
-      <div class="recipe-title-block">
-        <h1>{title}</h1>
-        <p class="contributed-by">
-          <span class="badge">🧁 Shared by</span>
-          <span class="contributor-name">{recipe.data.contributor.startsWith("Dr") ? recipe.data.contributor : recipe.data.contributor.split(' ')[0]}</span>
-        </p>
-      </div>
-    </header>
+      )
+    }
+    <div class="recipe-title-block">
+      <h1>{title}</h1>
+      <p class="contributed-by">
+        <span class="badge">🧁 Shared by</span>
+        <span class="contributor-name"
+          >{
+            recipe.data.contributor.startsWith("Dr")
+              ? recipe.data.contributor
+              : recipe.data.contributor.split(" ")[0]
+          }</span
+        >
+      </p>
+    </div>
+  </header>
 
-    <div class="recipe-body">
-      <div class="recipe-columns">
-        <section class="recipe-section ingredients-section">
-          <h2>
-            <span class="section-icon">🛒</span>
-            Ingredients
-          </h2>
-          <ol class="ingredients-list">
-            {ingredients.map(ingredient => (
-              ingredient.endsWith(':') ?
-              <p>{ingredient}</p> :
-              <li>{ingredient}</li>
-            ))}
-          </ol>
-        </section>
-
-        <section class="recipe-section instructions-section">
-          <h2>
-            <span class="section-icon">👩‍🍳</span>
-            Instructions
-          </h2>
-          <ol class="instructions-list">
-            {instructions.map(step => (
-              step.endsWith(':') ?
-              <p>{step}</p> :
-              <li>{step}</li>
-            ))}
-          </ol>
-        </section>
-      </div>
-
-      {story && (
+  <div class="recipe-body">
+    {
+      story && (
         <section class="story-section">
           <h2>
             <span class="section-icon">💬</span>
@@ -69,8 +50,42 @@ const { title, contributor, ingredients, instructions, story, photo } = recipe.d
           </h2>
           <blockquote class="story-text">{story}</blockquote>
         </section>
-      )}
+      )
+    }
+    <div class="recipe-columns">
+      <section class="recipe-section ingredients-section">
+        <h2>
+          <span class="section-icon">🛒</span>
+          Ingredients
+        </h2>
+        <ol class="ingredients-list">
+          {
+            ingredients.map((ingredient) =>
+              ingredient.endsWith(":") ? (
+                <p>{ingredient}</p>
+              ) : (
+                <li>{ingredient}</li>
+              ),
+            )
+          }
+        </ol>
+      </section>
+
+      <section class="recipe-section instructions-section">
+        <h2>
+          <span class="section-icon">👩‍🍳</span>
+          Instructions
+        </h2>
+        <ol class="instructions-list">
+          {
+            instructions.map((step) =>
+              step.endsWith(":") ? <p>{step}</p> : <li>{step}</li>,
+            )
+          }
+        </ol>
+      </section>
     </div>
+  </div>
 </BookLayout>
 
 <style>
@@ -97,7 +112,9 @@ const { title, contributor, ingredients, instructions, story, photo } = recipe.d
     border: 1.5px solid var(--color-border);
     border-radius: 999px;
     background: var(--color-card);
-    transition: background 0.2s, border-color 0.2s;
+    transition:
+      background 0.2s,
+      border-color 0.2s;
   }
 
   .back-link:hover {
@@ -284,7 +301,11 @@ const { title, contributor, ingredients, instructions, story, photo } = recipe.d
     content: counter(step-counter);
     min-width: 2rem;
     height: 2rem;
-    background: linear-gradient(135deg, var(--color-lavender), var(--color-rose));
+    background: linear-gradient(
+      135deg,
+      var(--color-lavender),
+      var(--color-rose)
+    );
     color: white;
     border-radius: 50%;
     display: inline-flex;
@@ -333,4 +354,3 @@ const { title, contributor, ingredients, instructions, story, photo } = recipe.d
     padding-left: 1.25rem;
   }
 </style>
-</BookLayout>
