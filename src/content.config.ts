@@ -1,17 +1,11 @@
 // content.config.ts
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { recipeSchema } from './lib/schema';
 
 const recipes = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/recipes' }),
-  schema: z.object({
-    title: z.string(),
-    contributor: z.string(),
-    ingredients: z.array(z.string()),
-    instructions: z.array(z.string()),
-    story: z.string().optional(),
-    photo: z.string().optional(),
-  }),
+  schema: recipeSchema,
 });
 
 export const collections = { recipes };
